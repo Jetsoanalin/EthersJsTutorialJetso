@@ -23,6 +23,42 @@ script for HTML -
  ethers
  ```
  4- Once everything displays a sucess message we are ready to interact with Ethereum Blockchain Network <br>
+ 
+ 
+ ## Starting with Contract and Test Networks :
+ 
+ Step 1: Go to remix.ethereum.org
+ Step 2: Create a new Solidity File by clicking on the plus option near browser top left
+ Step 3: Give your file a new name- hello.sol
+ Step 4: Write your contract- eg: https://github.com/jetsoanalin/collegedemo
+ 
+ ```
+pragma solidity ^0.5.11;
+contract MyContract {
+    function get() public view returns(string memory) {
+    return value;
+}
+function set(string memory _value) public {
+    value = _value;
+}
+
+}
+
+ ```
+
+Step 5: Go to the left pannel in remix IDE and at below plugin option Activate 2 plugin Solidity Compiler and Deploy & Run <br>
+Step 6: Go to compile and select the correct solidity version written in the contract <br>
+Step 7: Compile the contract <br>
+Step 8: After compiling below you will find Contract Dropdown - Select your Contract name and copy the ABI file by clicking on the ABI below it at the end (This will be required for Integration so save it somewhere) <br>
+Step 9: Connect your wallet to Metamask (If not having metamask then install metamask and load a wallet in it with test ethers)<br>
+Step 10: For Test etheres in Ropsten Network go to https://faucet.ropsten.be/  or  https://faucet.metamask.io/  you will recieve your test ethers (Take only 1 test ethers for 24 hours or else you will be grey listed)<br>
+Step 11: Once you are connected to metamask with test ethers and your network selected from main network to test network click on deploy and run<br>
+Step 12: In the Environment click change from JavaVM to Web3Injected your metamask will popup confirm it.<br>
+Step 13: Once you are connected your address and balance will be displayed.<br>
+Step 14: Click on Deploy a Metamask popup will be displayed confirm the transaction.<br>
+Step 15: Once your Transaction is sucessfully completed your Contract will be deployed<br>
+Step 16: Once its deployed you will see your contract below in left deploy and run pannel with its address and (blockchain) written which means its deployed in blockchain- Click on copy button and copy the address you will need it for frontend integration.<br>
+
 
 ## Creating a Wallet Instance for Signing Contract:
 ```
