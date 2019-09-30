@@ -172,7 +172,7 @@ ethers.Wallet.fromEncryptedJson(json, password).then(function(wallet) {
 
 
 
-##### Loading a Contract with EthersJs
+## Loading a Contract with EthersJs
 
 JavaScript :
 
@@ -181,6 +181,22 @@ let contractabi = Paste your contract ABI from remix.ethereum.org here ;
 let contractaddress = "paste your contract address deployed in Testnet/Mainnet here (Not Javascript deployment address) ";
 let contract = new ethers.Contract(contractaddress,contractabi,wallet);
 ```
+
+
+## Calling Smart Contract functions
+
+JavaScript :
+```
+//If i have a function of checking the superAdmin in the contract
+var superadmin = await contract.functions.superAdmin(); //Example
+// await (contractName).functions.(YourFunctionName()); //Template
+
+//If you want to pass a value inside contract
+var pass = await contract.functions.put("Hello World"); //Example
+// await (contractName).functions.(YourFunctionName("Parameters")); //Template
+
+```
+
 
 ## Estimating Gas in EthersJs
 
