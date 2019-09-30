@@ -73,6 +73,34 @@ let provider = ethers.getDefaultProvider(); //For Mainnet <br>
 
 
 
+
+##### Creating Wallet: <br>
+
+Step 1- Create UI only for Mnemonics. <br>
+Step 2- Take password as input while creating a wallet with mnemonics. <br>
+Step 3- This will generate wallet with mnemonics and keystore where keystore will only contain first address and mnemonics will have multiple. <br>
+Step 4- Save the mnemonics (for your Mnemonic) and json (Save it as .json file).
+
+```
+let mnemonics = ethers.Wallet.createRandom().mnemonic;
+
+let wallet = ethers.Wallet.fromMnemonic("Paste your Mnemonics here");
+
+let password = "Your Password here";
+
+function callback(progress) {
+    console.log("Encrypting: " + parseInt(progress * 100) + "% complete");
+}
+
+let encryptPromise = wallet.encrypt(password, callback);
+
+encryptPromise.then(function(json) {
+    console.log(json);
+});
+```
+
+
+
 ### Loading Wallet :
 
 ##### Using Private Key - <br>
@@ -88,6 +116,13 @@ ethers.Wallet.createRandom().mnemonic;
 
 Loading From Mnemonics :
 let wallet = ethers.Wallet.fromMnemonic("Paste your Mnemonics here");
+
+Loading Your second wallet and other multiple wallets :
+var path = "m/44'/60'/0'/0/1"; //this will load the 2nd wallet
+or
+var path = "m/44'/60'/0'/0/2"; //this will load the 3rd wallet
+(You can increase the end number in path for multiple wallet Address for your Mnemonics)
+
 
 ```
 
@@ -125,26 +160,6 @@ ethers.Wallet.fromEncryptedJson(json, password).then(function(wallet) {
 ```
 
 
-##### Create Wallet Using mnemonics : <br>
-```
-let mnemonics = ethers.Wallet.createRandom().mnemonic;
-
-```
-
-##### Create Wallet Using Keystore : <br>
-```
-let password = "Your Password here";
-
-function callback(progress) {
-    console.log("Encrypting: " + parseInt(progress * 100) + "% complete");
-}
-
-let encryptPromise = wallet.encrypt(password, callback);
-
-encryptPromise.then(function(json) {
-    console.log(json);
-});
-```
 
 ##### To get the Network version from Metamask : <br> <br>
 1- Install Metamask in website  <br>
