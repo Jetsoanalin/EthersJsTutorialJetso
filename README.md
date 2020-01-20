@@ -4,7 +4,8 @@
 
 1-Load a application with ethersJS loaded in it 
 script for HTML - 
-```
+
+```html
  <script charset="utf-8"
             src="https://cdn.ethers.io/scripts/ethers-v4.min.js" type="text/javascript">
         </script>
@@ -17,6 +18,7 @@ script for HTML -
  2- Check the connections by loading the application in browser <br>
  3- Open browser with application loaded press F12 go to Console <br>
  3- enter these 3 commands one by one and press enter after each command : <br>
+ 
  ```
  ethereum 
  web3
@@ -32,7 +34,7 @@ script for HTML -
  Step 3: Give your file a new name- hello.sol
  Step 4: Write your contract- eg: https://github.com/jetsoanalin/collegedemo
  
- ```
+ ```js
 pragma solidity ^0.5.11;
 contract MyContract {
     function get() public view returns(string memory) {
@@ -61,7 +63,7 @@ Step 16: Once its deployed you will see your contract below in left deploy and r
 
 
 ## Creating a Wallet Instance for Signing Contract:
-```
+```js
 let provider = new ethers.getDefaultProvider('rinkeby'); //For Different Testnets <br>
 
 or
@@ -70,7 +72,7 @@ let provider = ethers.getDefaultProvider(); //For Mainnet <br>
 ```
 
 #### To Connect uing Metamask:
-    
+```js
     (async() => {
 
         if(window.ethereum) {
@@ -105,7 +107,7 @@ let provider = ethers.getDefaultProvider(); //For Mainnet <br>
             // (Display Message) "Metamask not found";
         }
     })();
-
+```
 
 
 
@@ -117,7 +119,7 @@ Step 2- Take password as input while creating a wallet with mnemonics. <br>
 Step 3- This will generate wallet with mnemonics and keystore where keystore will only contain first address and mnemonics will have multiple. <br>
 Step 4- Save the mnemonics (for your Mnemonic) and json (Save it as .json file).
 
-```
+```js
 let mnemonics = ethers.Wallet.createRandom().mnemonic;
 
 let wallet = ethers.Wallet.fromMnemonic("Paste your Mnemonics here");
@@ -140,13 +142,13 @@ encryptPromise.then(function(json) {
 ### Loading Wallet :
 
 ##### Using Private Key - <br>
-```
+```js
 let privatekey = "place your Private Key here";
 let wallet = new ethers.Wallet(privatekey,provider); 
 ```
 
 ##### Using Mnemonics - <br>
-```
+```js
 Creating Random Mnemonics :
 ethers.Wallet.createRandom().mnemonic;
 
@@ -163,7 +165,7 @@ var path = "m/44'/60'/0'/0/2"; //this will load the 3rd wallet
 ```
 
 ##### Using KeyStore - <br>
-```
+```js
 let data = {
     id: "fb1280c0-d646-4e40-9550-7026b1be504a",
     address: "88a5c2d9919e46f883eb62f7b8dd9d0cc45bc290",
@@ -208,7 +210,7 @@ ethers.Wallet.fromEncryptedJson(json, password).then(function(wallet) {
 
 
 ## Getting List of Accounts using Mnemonics :
-```
+```js
 let walletPath = {
     "standard": "m/44'/60'/0'/0/0", // Changing the last digit will give the sequence of address
     // For Ex: "m/44'/60'/0'/0/1" will give 2nd Address
@@ -227,7 +229,7 @@ console.log(wallet.address);
 
 ## Getting List of Accounts using Metamask :
 
-```
+```js
 // Only for Metamask
 let accounts = metamaskWeb3Provider.listAccounts()
                       .then(result => console.log(result))
@@ -239,7 +241,7 @@ let accounts = metamaskWeb3Provider.listAccounts()
 
 JavaScript :
 
-```
+```js
 let contractabi = Paste your contract ABI from remix.ethereum.org here ;
 let contractaddress = "paste your contract address deployed in Testnet/Mainnet here (Not Javascript deployment address) ";
 let contract = new ethers.Contract(contractaddress,contractabi,wallet);
@@ -249,7 +251,7 @@ let contract = new ethers.Contract(contractaddress,contractabi,wallet);
 ## Calling Smart Contract functions
 
 JavaScript :
-```
+```js
 //If i have a function of checking the superAdmin in the contract
 var superadmin = await contract.functions.superAdmin(); //Example
 // await (contractName).functions.(YourFunctionName()); //Template
@@ -265,7 +267,7 @@ var pass = await contract.functions.put("Hello World"); //Example
 
 JavaScript File: (Run on Console)<br>
 
-```
+```js
 1st Example: (Estimate Function)
 //contract.estimate.(YourFunctionName)(parameters);
 contract.estimate.transfer("0xC643eFaB1DB16CCd17C44F6a7E652AFB3C37A940",100000000000000000000); 
