@@ -207,6 +207,33 @@ ethers.Wallet.fromEncryptedJson(json, password).then(function(wallet) {
 7- If you want to work with multiple testnet or want to switch between mainnet and Testnet then you can use this function in switch case <br> <br>
 
 
+## Getting List of Accounts using Mnemonics :
+```
+let walletPath = {
+    "standard": "m/44'/60'/0'/0/0", // Changing the last digit will give the sequence of address
+    // For Ex: "m/44'/60'/0'/0/1" will give 2nd Address
+
+    // @TODO: Include some non-standard wallet paths
+};
+
+let mnemonic = "radar blur cabbage chef fix engine embark joy scheme fiction master release";
+let hdnode = ethers.utils.HDNode.fromMnemonic(mnemonic);
+let node = hdnode.derivePath(walletPath.standard);
+
+let wallet = new ethers.Wallet(node.privateKey);
+console.log(wallet.address);
+```
+
+
+## Getting List of Accounts using Metamask :
+
+```
+// Only for Metamask
+let accounts = metamaskWeb3Provider.listAccounts()
+                      .then(result => console.log(result))
+                      .catch(error => console.log(error))
+```
+
 
 ## Loading a Contract with EthersJs
 
